@@ -1,0 +1,6 @@
+#x <- read.table('/MMCI/MS/ExpRegulation/work/data/DEEP_ChIP_HM/41/LiHe/PP_plus.txt')
+args <- commandArgs(trailingOnly=T)
+x <- read.table(args[1])
+window <- as.numeric(args[2])
+newx <- cbind(paste('chr',x[,4],sep=''),x[,5],x[,5] + window,rep("M2",nrow(x)),rep("0",nrow(x)),as.character(x[,3]))
+write.table(newx,args[3],col.names=F,row.names=F,quote=F)
